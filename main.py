@@ -5,6 +5,7 @@ SHOPEE_URL = "https://shopee.co.id/"
 SEARCH_ENDPOINT = "api/v2/search_items/"
 SEARCH_KEYWORD = "Google nest"
 SEARCH_ITERATION = 2   # Number of page to browse
+SAVED_FILE = "data.json"
 
 def main():
     """Using selenium to scrape Shopee """
@@ -20,7 +21,7 @@ def main():
     for url in urls:
         product= sel.search(driver=driver, url=url)
         products.append(product)
-        with open('data.json', 'w', encoding='utf-8') as f:
+        with open(SAVED_FILE, 'w', encoding='utf-8') as f:
             json.dump(products, f, ensure_ascii=False, indent=4)
         print(product)
 
